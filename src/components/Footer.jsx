@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom'
 import { Mail, MapPin, ArrowRight } from 'lucide-react'
-import { HylamMark } from './Logo'
+import { HylamLogo } from './Logo'
 
 function LiIcon()  { return <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6zM2 9h4v12H2z"/><circle cx="4" cy="4" r="2"/></svg> }
 function XIcon()   { return <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg> }
@@ -36,16 +36,8 @@ export default function Footer() {
           {/* Col 1 — Brand */}
           <div>
             {/* Logo */}
-            <div className="flex items-center gap-3 mb-5">
-              <HylamMark size={44} />
-              <div>
-                <div style={{ fontFamily: '"Space Grotesk", sans-serif', fontWeight: 700, fontSize: 19, color: '#ffffff', letterSpacing: '-0.3px' }}>
-                  Hylam
-                </div>
-                <div style={{ fontFamily: '"DM Sans", sans-serif', fontSize: 9.5, color: 'rgba(255,255,255,0.45)', letterSpacing: '0.18em', textTransform: 'uppercase', marginTop: 2 }}>
-                  Technologies
-                </div>
-              </div>
+            <div className="mb-5">
+              <HylamLogo size={72} />
             </div>
 
             <p style={{ fontFamily: '"DM Sans", sans-serif', fontSize: 14, color: 'rgba(255,255,255,0.55)', lineHeight: 1.75, marginBottom: 24 }}>
