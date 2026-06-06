@@ -1,72 +1,78 @@
 import { Link } from 'react-router-dom'
 
 /**
- * HT Monogram — the Hylam Technologies logo mark.
+ * Hylam Technologies H-mark
  *
- * Design language:
- *   • Navy rounded-square container
- *   • H (white) on the left half  — two pillars + gold crossbar
- *   • T (white/gold) on the right — stem + gold top-bar at same x-height as H crossbar
- *   • The two gold elements (H crossbar + T top-bar) sit at the same visual weight,
- *     tying both letters into one unified mark
- *   • Subtle radial highlight in top-left corner gives depth without skeuomorphism
+ * Two perspective-skewed parallelogram pillars:
+ *   Left  — Gold  (#C8912A)  : the warm accent face
+ *   Right — Navy  (#1B3A6B)  : the primary brand face
+ *
+ * The H crossbar is a circuit-trace motif — a horizontal line capped
+ * by two ring nodes — reinforcing the technology identity without
+ * relying on a literal crossbar.
  */
 export function HylamMark({ size = 48, className = '' }) {
   return (
     <svg
       width={size}
       height={size}
-      viewBox="0 0 52 52"
+      viewBox="0 0 100 100"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
       className={className}
-      aria-hidden="true"
+      aria-label="Hylam Technologies"
     >
-      {/* ── Container ────────────────────────────────── */}
-      <rect width="52" height="52" rx="11" fill="#1B3A6B" />
+      {/* ── Left pillar — Gold ─────────────────────────── */}
+      {/* Slight rightward lean: top-right edge at 36, bottom-right at 31 */}
+      <polygon points="7,4 36,4 31,96 2,96" fill="#C8912A" />
+      {/* Top-left sheen strip — simulates light hitting the left face */}
+      <polygon points="7,4 16,4 11,96 2,96" fill="rgba(255,255,255,0.18)" />
 
-      {/* Subtle top-left sheen */}
-      <rect width="52" height="52" rx="11" fill="url(#htSheen)" opacity="0.18" />
+      {/* ── Right pillar — Navy ────────────────────────── */}
+      {/* Mirrored lean: bottom-right edge at 98, top-right at 93 */}
+      <polygon points="64,4 93,4 98,96 69,96" fill="#1B3A6B" />
+      {/* Right-edge depth shadow */}
+      <polygon points="85,4 93,4 98,96 90,96" fill="rgba(0,0,0,0.20)" />
 
-      {/* ── H  ───────────────────────────────────────── */}
-      {/* Left pillar */}
-      <rect x="5"  y="8" width="7" height="36" rx="2" fill="white" />
-      {/* Right pillar */}
-      <rect x="18" y="8" width="7" height="36" rx="2" fill="white" />
-      {/* Gold crossbar — the "bridge" */}
-      <rect x="12" y="22" width="6" height="8"  rx="2" fill="#C8912A" />
-
-      {/* ── T  ───────────────────────────────────────── */}
-      {/* Gold top bar  */}
-      <rect x="27" y="8"  width="20" height="8" rx="2" fill="#C8912A" />
-      {/* White stem */}
-      <rect x="34" y="16" width="6"  height="28" rx="2" fill="white"   />
-
-      {/* ── Defs ─────────────────────────────────────── */}
-      <defs>
-        <radialGradient id="htSheen" cx="0%" cy="0%" r="80%">
-          <stop offset="0%"   stopColor="white" stopOpacity="0.35" />
-          <stop offset="100%" stopColor="white" stopOpacity="0"    />
-        </radialGradient>
-      </defs>
+      {/* ── Circuit crossbar — at ~49% height ──────────── */}
+      {/*
+        At y=49 the inner edges of each pillar converge to:
+          Left  pillar right edge → x ≈ 33.5
+          Right pillar left  edge → x ≈ 66.5
+        The line and nodes span/straddle the gap between pillars.
+      */}
+      <line
+        x1="33" y1="49"
+        x2="67" y2="49"
+        stroke="white"
+        strokeWidth="2.5"
+        strokeLinecap="round"
+      />
+      {/* Left node — sits on the gold pillar inner edge */}
+      <circle cx="33" cy="49" r="5.5" fill="white" />
+      <circle cx="33" cy="49" r="2.5" fill="#C8912A" />
+      {/* Right node — sits on the navy pillar inner edge */}
+      <circle cx="67" cy="49" r="5.5" fill="white" />
+      <circle cx="67" cy="49" r="2.5" fill="#1B3A6B" />
     </svg>
   )
 }
 
 /**
  * Full horizontal lockup — mark + wordmark.
- * light=true  → wordmark in white  (use on dark/navy backgrounds)
- * light=false → wordmark in navy   (use on white backgrounds)
+ *
+ * light=true  → white wordmark text  (dark/navy backgrounds, e.g. Footer)
+ * light=false → navy wordmark text   (white/light backgrounds, e.g. Navbar)
  */
 export function HylamLogo({ light = false, size = 44, linkTo = '/', className = '' }) {
-  const primary   = light ? '#ffffff'              : '#1B3A6B'
+  const primary   = light ? '#ffffff'               : '#1B3A6B'
   const secondary = light ? 'rgba(255,255,255,0.45)' : '#9CA3AF'
 
   return (
     <Link
       to={linkTo}
       className={className}
-      style={{ display: 'inline-flex', alignItems: 'center', gap: 11, textDecoration: 'none' }}
+      style={{ display: 'inline-flex', alignItems: 'center', gap: 12, textDecoration: 'none' }}
     >
       <HylamMark size={size} />
       <div style={{ display: 'flex', flexDirection: 'column', lineHeight: 1 }}>
@@ -74,10 +80,10 @@ export function HylamLogo({ light = false, size = 44, linkTo = '/', className = 
           style={{
             fontFamily:    '"Space Grotesk", sans-serif',
             fontWeight:    700,
-            fontSize:      21,
+            fontSize:      Math.round(size * 0.52),
             color:         primary,
             letterSpacing: '-0.4px',
-            lineHeight:    1.15,
+            lineHeight:    1.1,
           }}
         >
           Hylam
@@ -86,7 +92,7 @@ export function HylamLogo({ light = false, size = 44, linkTo = '/', className = 
           style={{
             fontFamily:    '"DM Sans", sans-serif',
             fontWeight:    500,
-            fontSize:      9.5,
+            fontSize:      Math.round(size * 0.22),
             color:         secondary,
             letterSpacing: '0.22em',
             textTransform: 'uppercase',

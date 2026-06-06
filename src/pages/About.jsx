@@ -4,13 +4,6 @@ import { CheckCircle2, ArrowRight, Users, Target, Heart, Award } from 'lucide-re
 
 const fadeUp = { hidden: { opacity: 0, y: 32 }, visible: { opacity: 1, y: 0, transition: { duration: 0.65 } } }
 
-const TEAM = [
-  { name: 'Ankit Sharma',   role: 'Founder & CEO',          cert: 'AWS Solutions Architect',   avatar: 'https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&w=300&q=80', initials: 'AS', color: '#1B3A6B' },
-  { name: 'Neha Kapoor',    role: 'CTO & Head of Cloud',    cert: 'Azure Solutions Expert',     avatar: 'https://images.unsplash.com/photo-1573496799515-eebbb63814f2?auto=format&fit=crop&w=300&q=80', initials: 'NK', color: '#2B5EA7' },
-  { name: 'Vikram Singh',   role: 'Head of Cybersecurity',  cert: 'CISSP & CEH Certified',      avatar: 'https://images.unsplash.com/photo-1568602471122-7832951cc4c5?auto=format&fit=crop&w=300&q=80', initials: 'VS', color: '#C8912A' },
-  { name: 'Ritu Verma',     role: 'Lead Data Architect',    cert: 'GCP Professional Data Eng.',  avatar: 'https://images.unsplash.com/photo-1580489944761-15a19d654956?auto=format&fit=crop&w=300&q=80', initials: 'RV', color: '#1B3A6B' },
-]
-
 const VALUES = [
   { Icon: Target,  title: 'Client-First',   text: 'Every decision we make is filtered through one question: does this serve our client\'s actual business goals?' },
   { Icon: Award,   title: 'Excellence',     text: 'We hold ourselves to the same standard whether we\'re building for a startup or a multinational.' },
@@ -135,48 +128,6 @@ export default function About() {
                 </motion.div>
               )
             })}
-          </div>
-        </div>
-      </section>
-
-      {/* ── Team ───────────────────────────────────────── */}
-      <section style={{ background: '#ffffff', padding: '96px 24px' }}>
-        <div style={{ maxWidth: 1280, margin: '0 auto' }}>
-          <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} style={{ textAlign: 'center', marginBottom: 56 }}>
-            <span className="section-eyebrow">The People</span>
-            <h2 className="section-title" style={{ fontSize: 'clamp(28px,4vw,42px)', marginBottom: 12 }}>Leadership Team</h2>
-            <p style={{ fontFamily: '"DM Sans",sans-serif', fontSize: 17, color: '#4B5563', maxWidth: 500, margin: '0 auto' }}>
-              Certified experts who've built careers on solving complex technical challenges.
-            </p>
-          </motion.div>
-
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-            {TEAM.map((m, i) => (
-              <motion.div key={m.name} initial={{ opacity: 0, y: 24 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.1 }}
-                style={{ background: '#ffffff', border: '1px solid #E5E7EB', borderRadius: 14, overflow: 'hidden', transition: 'box-shadow 0.25s, transform 0.25s' }}
-                whileHover={{ y: -4, boxShadow: '0 16px 48px rgba(27,58,107,0.12)' }}
-              >
-                <div style={{ height: 200, overflow: 'hidden', background: '#EEF2F8' }}>
-                  <img src={m.avatar} alt={m.name}
-                    style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'top', transition: 'transform 0.5s' }}
-                    onMouseEnter={e=>e.currentTarget.style.transform='scale(1.06)'}
-                    onMouseLeave={e=>e.currentTarget.style.transform='scale(1)'}
-                    onError={e => {
-                      e.target.style.display = 'none'
-                      e.target.parentElement.style.display = 'flex'
-                      e.target.parentElement.style.alignItems = 'center'
-                      e.target.parentElement.style.justifyContent = 'center'
-                      e.target.parentElement.innerHTML = `<span style="font-family:Space Grotesk;font-weight:800;font-size:32px;color:${m.color}">${m.initials}</span>`
-                    }}
-                  />
-                </div>
-                <div style={{ padding: '20px 20px 24px' }}>
-                  <h4 style={{ fontFamily: '"Space Grotesk",sans-serif', fontWeight: 700, fontSize: 16, color: '#111827', marginBottom: 4 }}>{m.name}</h4>
-                  <p style={{ fontFamily: '"DM Sans",sans-serif', fontSize: 13, color: '#1B3A6B', fontWeight: 600, marginBottom: 8 }}>{m.role}</p>
-                  <div style={{ display: 'inline-block', background: '#FDF3DC', border: '1px solid rgba(200,145,42,0.3)', borderRadius: 100, padding: '3px 10px', fontFamily: '"DM Sans",sans-serif', fontSize: 11, color: '#A67020', fontWeight: 500 }}>{m.cert}</div>
-                </div>
-              </motion.div>
-            ))}
           </div>
         </div>
       </section>
