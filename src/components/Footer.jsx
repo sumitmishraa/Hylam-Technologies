@@ -37,7 +37,7 @@ export default function Footer() {
           <div>
             {/* Logo */}
             <div className="mb-5">
-              <HylamLogo size={72} />
+              <HylamLogo height={64} onDark={true} />
             </div>
 
             <p style={{ fontFamily: '"DM Sans", sans-serif', fontSize: 14, color: 'rgba(255,255,255,0.55)', lineHeight: 1.75, marginBottom: 24 }}>

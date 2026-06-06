@@ -158,7 +158,7 @@ export default function Navbar() {
       <div style={{ maxWidth: 1280, margin: '0 auto', padding: '0 24px', display: 'flex', alignItems: 'center', justifyContent: 'space-between', height: 72 }}>
 
         {/* Logo */}
-        <HylamLogo size={56} />
+        <HylamLogo height={52} />
 
         {/* ── Desktop nav ───────────────────────────── */}
         <nav className="hidden lg:flex items-center" style={{ gap: 2 }}>
